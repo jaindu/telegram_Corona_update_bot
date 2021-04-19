@@ -30,7 +30,8 @@ def staat(qq):
   r = requests.post(url, data=json.dumps(data), headers=headers)
 
 def staa():
-    jsondata = requests.get('https://hpb.health.gov.lk/api/get-current-statistical').json
+    r = requests.get('https://hpb.health.gov.lk/api/get-current-statistical')
+    jsondata = json.loads(r.text)
     update_date_time    = str(jsondata['data']['update_date_time'])
     local_new_cases     = str(jsondata['data']['local_new_cases'])
     local_active_cases  = str(jsondata['data']['local_active_cases'])
